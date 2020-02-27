@@ -13,7 +13,7 @@ function ListModalForm({showModalForm, newListItem, onCloseModal, changes, submi
         <div>
             <Modal show={showModalForm} onHide={onCloseModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>add new task</Modal.Title>
+                    <Modal.Title>add new</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={add}>

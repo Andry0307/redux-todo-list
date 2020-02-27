@@ -5,7 +5,7 @@ import {showModal} from '../store/actions';
 function Header({onShowModal}) {
     return (
         <nav className='navbar  bg-dark'>
-            <h2>Task List</h2>
+            <h2>Todo List</h2>
             <button className='btn btn-success' onClick={onShowModal}>
                 Add New
             </button>

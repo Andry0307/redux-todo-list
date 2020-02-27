@@ -32,7 +32,7 @@ export default function (state = initState, action) {
         case CHANGE_VALUE:
             return {...state, newListItem:{...state.newListItem, ...action.payload}};
         case FORM_SUBMIT:
-             return action.payload.id ? editItem(state, action) : addItem(state, action)
+             return action.payload.id ? editItem(state, action) : addItem(state, action);
         case DELETE_LIST_ITEM:
             return {...state, todoList: state.todoList.filter((item)=>{
                     return item.id !== action.payload
