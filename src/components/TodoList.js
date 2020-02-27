@@ -21,9 +21,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps() {
-    return {
-
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

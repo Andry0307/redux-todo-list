@@ -10,6 +10,18 @@ const initState = {
     showModalForm: false
 };
 
+function addItem(state, action) {
+    return {...state, todoList: [...state.todoList, {id:Date.now(), ...action.payload}],
+        newListItem: {name: ''} }
+}
+
+function editItem(state, action) {
+    return {...state, todoList: state.todoList.map((item)=>{
+        return item.id === action.payload.id ?  action.payload : item;
+        }),
+        newListItem: {name: ''} };
+}
+
 export default function (state = initState, action) {
     console.log('action', action);
     switch (action.type) {
@@ -20,23 +32,7 @@ export default function (state = initState, action) {
         case CHANGE_VALUE:
             return {...state, newListItem:{...state.newListItem, ...action.payload}};
         case FORM_SUBMIT:
-            if(!action.payload.id){
-                return {...state, todoList: [...state.todoList, {id:Date.now(), ...action.payload}],
-                    newListItem: {name: ''} }
-            }else {
-                return {...state, todoList: state.todoList.map((item)=>{
-                        if(!action.payload.id){
-                            return {id:Date.now(), ...action.payload}
-                        }
-                        if(item.id === action.payload.id){
-                            return action.payload
-                        }else {
-                            return item
-                        }
-                    }),
-                    newListItem: {name: ''} };
-            }
-
+             return action.payload.id ? editItem(state, action) : addItem(state, action)
         case DELETE_LIST_ITEM:
             return {...state, todoList: state.todoList.filter((item)=>{
                     return item.id !== action.payload
@@ -47,5 +43,3 @@ export default function (state = initState, action) {
             return state;
     }
 }
-
-// todoList: [...state.todoList, {id:Date.now(), ...action.payload}],

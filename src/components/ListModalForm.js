@@ -3,16 +3,15 @@ import {connect} from 'react-redux';
 import {Button, Modal} from "react-bootstrap";
 import {closeModal, changeValue, onFormSubmit} from '../store/actions'
 
-function ListModalForm({showModalForm, newListItem, close, changes, submit}) {
+function ListModalForm({showModalForm, newListItem, onCloseModal, changes, submit}) {
     function add(e) {
         e.preventDefault();
-        console.log('newListItem', newListItem);
         submit(newListItem)
     }
 
     return (
         <div>
-            <Modal show={showModalForm} onHide={close}>
+            <Modal show={showModalForm} onHide={onCloseModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>add new task</Modal.Title>
                 </Modal.Header>
@@ -24,10 +23,10 @@ function ListModalForm({showModalForm, newListItem, close, changes, submit}) {
                                name='name'
                                type='text'/>
                         <Modal.Footer>
-                            <Button  variant="secondary" onClick={close}>
+                            <Button  variant="secondary" onClick={onCloseModal}>
                                 Close
                             </Button>
-                            <Button type='submit' variant="primary" onClick={close}>
+                            <Button type='submit' variant="primary" onClick={onCloseModal}>
                                 add
                             </Button>
                         </Modal.Footer>
@@ -46,7 +45,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    close: closeModal,
+    onCloseModal: closeModal,
     changes: changeValue,
     submit: onFormSubmit
 };
