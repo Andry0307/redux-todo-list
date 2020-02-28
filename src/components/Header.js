@@ -13,12 +13,8 @@ function Header({onShowModal}) {
     );
 }
 
-function mapStateToProps(state) {
-    return {}
-}
-
 const mapDispatchToProps = {
     onShowModal: showModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

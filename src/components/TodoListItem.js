@@ -21,9 +21,6 @@ function TodoListItem({itemList, deleteItem, editItem, onShowModal}) {
         </li>
     );
 }
-function mapStateToProps(state) {
-    return{}
-}
 
 const mapDispatchToProps = {
     deleteItem: deleteListItem,
@@ -31,4 +28,4 @@ const mapDispatchToProps = {
     onShowModal: showModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoListItem);
+export default connect(null, mapDispatchToProps)(TodoListItem);

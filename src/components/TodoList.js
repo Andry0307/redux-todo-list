@@ -20,8 +20,4 @@ function mapStateToProps(state) {
 
 }
 
-function mapDispatchToProps() {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps, null)(TodoList);
